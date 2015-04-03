@@ -691,7 +691,6 @@ def new_game():
     dungeon_level = 1
     camera = Camera(0, 0)
     make_map("I would like to fly a plane one day. The wind in my hair gives me hope. When the sun sets over the clouds, I know that everything will be okay.")
-    print len("I would like to fly a plane one day. The wind in my hair gives me hope. When the sun sets over the clouds, I know that everything will be okay.")
     initialize_fov()
 
     game_state = 'playing'
