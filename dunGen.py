@@ -404,10 +404,10 @@ def make_map(secret):
     stairs.send_to_back() # drawn below monsters
 
     if num_rooms < len(secret) - 1:
-        make_map(secret)
-        return True
+        print "nope"
+        return False
 
-    return False
+    return True
 
 class Rect:
     def __init__(self, x, y, w, h):
@@ -539,37 +539,6 @@ def place_objects(room):
             objects.append(food)
             food.send_to_back()
 
-def create_monster(x, y):
-    # chance of each monster (figure out a better way to handle boss frequency)
-    monster_chances = ['orc', 'mimic', 'skeleton', 'troll', 'lich', 'dragon',
-                        'boss_dragon']
-    
-    choice = random.choice(monster_chances)
-
-    if choice == 'orc':
-        monster = Object(x, y, 'O', 'Orc', libtcod.desaturated_green,
-                         blocks=True)
-    elif choice == 'skeleton':
-        monster = Object(x, y, 'S', 'Skeleton', libtcod.grey,
-                         blocks=True)
-    elif choice == 'mimic':
-        monster = Object(x, y, item.char, item.full_name, item.color,
-                         blocks=True)
-    elif choice == 'troll':
-        monster = Object(x, y, 'T', 'Troll', libtcod.darker_green,
-                         blocks=True)
-    elif choice == 'lich':
-        monster = Object(x, y, 'L', 'Lich', libtcod.desaturated_blue,
-                         blocks=True)
-    elif choice == 'dragon':
-        monster = Object(x, y, 'D', 'Dragon', libtcod.desaturated_red,
-                         blocks=True) 
-    elif choice == 'boss_dragon':
-        monster = Object(x, y, 'D', 'Dragon', libtcod.desaturated_red,
-                         blocks=True)
-    return monster
-
-
 def create_equip(x, y):
     # chance of each item (default is 0 at level 1, goes up after)
     item_chances = ['sword', 'shield']
@@ -690,8 +659,9 @@ def new_game():
 
     dungeon_level = 1
     camera = Camera(0, 0)
-    make_map("I would like to fly a plane one day. The wind in my hair gives me hope. When the sun sets over the clouds, I know that everything will be okay.")
-    print len("I would like to fly a plane one day. The wind in my hair gives me hope. When the sun sets over the clouds, I know that everything will be okay.")
+    while not make_map("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals."):
+        pass
+#    print len("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals.")
     initialize_fov()
 
     game_state = 'playing'
