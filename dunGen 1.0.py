@@ -383,8 +383,7 @@ def make_map(secret):
     map[center_x - 2][center_y].blocked = False
     map[center_x - 2][center_y].block_sight = False
 
-    i = 0
-    while (i < 10000) and (num_rooms < len(secret)) and (len(stack) != 0):
+    while (num_rooms < len(secret)) and (len(stack) != 0):
         if len(stack) > (len(secret) / 2):
             for i in range(0, random.randint(0, (len(secret) / 2) - 1)):
                 stack.pop()
@@ -662,21 +661,21 @@ def create_treasure(x, y):
     choice = random.choice(item_chances)
     
     if choice == 'chalice':
-        item = Object(x, y, '$', 'chalice', libtcod.light_yellow)
+        item = Object(x, y, '+', 'chalice', libtcod.light_yellow)
     elif choice == 'scepter':
-        item = Object(x, y, '$', 'scepter', libtcod.light_yellow)
+        item = Object(x, y, '/', 'scepter', libtcod.light_yellow)
     elif choice == 'coin purse':
         item = Object(x, y, '$', 'coin purse', libtcod.light_yellow)
     elif choice == 'shiny pebble':
-        item = Object(x, y, '$', 'shiny pebble', libtcod.light_yellow)
+        item = Object(x, y, '.', 'shiny pebble', libtcod.light_yellow)
     elif choice == 'amulet':
-        item = Object(x, y, '$', 'amulet', libtcod.light_yellow)
+        item = Object(x, y, '\"', 'amulet', libtcod.light_yellow)
     elif choice == 'gold bracelet':
-        item = Object(x, y, '$', 'gold bracelet', libtcod.light_yellow)
+        item = Object(x, y, '\"', 'gold bracelet', libtcod.light_yellow)
     elif choice == 'ruby':
-        item = Object(x, y, '$', 'rubby', libtcod.light_yellow)
+        item = Object(x, y, '*', 'rubby', libtcod.light_yellow)
     elif choice == 'sapphire':
-        item = Object(x, y, '$', 'sapphire', libtcod.light_yellow)
+        item = Object(x, y, '*', 'sapphire', libtcod.light_yellow)
 
     return item
 
@@ -752,9 +751,9 @@ def new_game():
 
     dungeon_level = 1
     camera = Camera(0, 0)
-    while not make_map("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals."):
+    while not make_map("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals. Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals. flashing across the pool, and that is the test of generals. generals."):
         pass
-#    print len("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals.")
+    print len("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals. Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals. flashing across the pool, and that is the test of generals. generals.")
     initialize_fov()
 
     game_state = 'playing'

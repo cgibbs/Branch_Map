@@ -1,2 +1,0 @@
-* Create an alphanumeric dictionary that corresponds to numbers of each type of object to be placed in the room.
-* Write method to generate items in rooms based on that dictionary.
