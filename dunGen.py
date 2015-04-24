@@ -3,6 +3,7 @@ import math
 import Queue
 import random
 import string
+import sys
 
 SCREEN_WIDTH = 160
 SCREEN_HEIGHT = 86
@@ -728,6 +729,12 @@ def insert_spaces(s):
 def new_game():
     global player, inventory, game_msgs, game_state, dungeon_level, steps, hunger_msg, ice_counter
     global msg_index, camera
+
+    if len(sys.argv) > 1:
+        input_string = sys.argv[1]
+    else:
+        input_string = "Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals."
+
     msg_index = 0
 
     name = 'Player'
@@ -752,7 +759,7 @@ def new_game():
 
     dungeon_level = 1
     camera = Camera(0, 0)
-    while not make_map("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals."):
+    while not make_map(input_string):
         pass
 #    print len("Nine-tenths of tactics are certain, and taught in books: but the irrational tenth is like the kingfisher flashing across the pool, and that is the test of generals.")
     initialize_fov()
